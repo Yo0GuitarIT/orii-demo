@@ -26,61 +26,67 @@ body {
   line-height: 1.6;
   color: var(--color-black);
   background-color: var(--color-white);
-}
-
-/* 更完整的 reset */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  background: none;
-  font-family: inherit;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-ul,
-ol {
-  list-style: none;
-}
-
-/* 常用的 utility classes */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.flex {
-  display: flex;
-}
-
-.flex-center {
+  height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.text-center {
-  text-align: center;
+li {
+  list-style: none;
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+.container {
+  max-width: 1440px;
+  width: 100%;
+  height: 100vh;
+  max-height: 872px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.sidebar {
+  width: 100%;
+  height: 100%;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  background: var(--color-brown);
+}
+
+.hero-section {
+  grid-column-start: 2;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  background: #eee;
+}
+
+.main-content {
+  grid-column-start: 2;
+  grid-column-end: 5;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  background: var(--color-beige);
+  display: flex;
+  
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.nav-item{
+  font-weight: var(--font-weight-regular);
+  color: var(--color-black);
+  text-decoration: none;
+  line-height: 100%;
+  padding: 16px 0;
 }
