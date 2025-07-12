@@ -1,3 +1,5 @@
+// 請寫出一段程式，找出 airportId 為 TPE 的 city，並印出它的 cityName
+
 const response = {
   status: "success",
   message: "",
@@ -35,15 +37,29 @@ const response = {
   ],
 };
 
-// FP 工具函數
+// 模擬一個 API 請求
+const queryData = async () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(response);
+    }, 500);
+  });
+};
+
 const pipe =
   (...fns) =>
   (value) =>
     fns.reduce((acc, fn) => fn(acc), value);
 
 const validateResponse = (response) => {
-  if (!response || response.status !== "success") {
-    throw new Error("Invalid response");
+  if (!response) {
+    throw new Error("No response received");
+  }
+  if (response.status !== "success") {
+    throw new Error(`API error: ${response.message || "Unknown error"}`);
+  }
+  if (!Array.isArray(response.data)) {
+    throw new Error("Invalid data format");
   }
   return response.data;
 };
@@ -61,9 +77,18 @@ const findAirport = (airportId) => (airports) =>
 
 const extractCityName = (airport) => airport?.cityName || null;
 
-// 融合查找函數
-const getCityNameByAirportId = (response, airportId) => {
+/**
+ * 根據機場ID查找對應的城市名稱
+ * @param {string} airportId - 機場ID (如: "TPE")
+ * @returns {Promise<string>} 城市名稱或 "Not found"
+ */
+const getCityNameByAirportId = async (airportId) => {
+  if (!airportId || typeof airportId !== "string") {
+    throw new Error("Airport ID must be a non-empty string");
+  }
+
   try {
+    const response = await queryData();
     return (
       pipe(
         validateResponse,
@@ -72,10 +97,18 @@ const getCityNameByAirportId = (response, airportId) => {
         extractCityName
       )(response) || "Not found"
     );
-  } catch (e) {
-    console.error(e.message);
+  } catch (error) {
+    console.error(
+      `Error finding city for airport ${airportId}:`,
+      error.message
+    );
     return "Not found";
   }
 };
 
-console.log(getCityNameByAirportId(response, "TPE"));
+const main = async () => {
+  const cityName = await getCityNameByAirportId("TPE");
+  console.log(cityName);
+};
+
+main();
