@@ -21,15 +21,11 @@
 4. **Compositing**：
    - 如果頁面包含多個圖層（如 transform、fixed、will-change），瀏覽器會分別繪製並在這個階段合成圖層為最終畫面。
 
----
-
 ## 效能影響：
 
 Layout（Reflow）和 Paint（Repaint）都是**昂貴的操作**，尤其是 layout，會遍歷整個 DOM Tree 重新計算幾何位置，可能導致卡頓。Compositing 雖然成本較低，但過多圖層仍會吃資源。
 
 若在動畫或高頻率操作中頻繁觸發這些階段，會導致明顯的效能問題。
-
----
 
 ## 優化策略：
 
