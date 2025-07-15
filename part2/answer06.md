@@ -8,8 +8,6 @@ AJAX（Asynchronous JavaScript and XML）是一種讓瀏覽器可以**在不重�
 
 AJAX 最早是透過 `XMLHttpRequest` 實作的，後來也可用更簡潔的 `fetch` API 或像 `Axios` 這類封裝過的工具來實現同樣功能。雖然名稱中有 XML，但實際上 AJAX 處理的資料格式通常是 JSON。
 
----
-
 ## 使用時機：
 
 - 提交表單但不刷新整頁（例如登入或留言功能）

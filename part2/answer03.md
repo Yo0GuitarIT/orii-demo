@@ -6,8 +6,6 @@
 
 嚴格來說，JavaScript **只有 call by value**，但在處理物件（reference type）時，因為變數儲存的是對物件的「參考值（reference）」，導致行為上呈現出類似「call by reference」的效果，這被稱為 **call by sharing** 或 **call by object reference**。
 
----
-
 ## 基礎概念：Stack 與 Heap
 
 在 JavaScript 的執行期間，變數的儲存位置會依照型別不同而不同：
@@ -16,8 +14,6 @@
 - **參考型別（reference type）**：例如 object、array、function 等，實際資料存在 heap 中，而 stack 中僅儲存一個指向 heap 的參考（pointer）。
 
 這樣的記憶體模型會影響「變數複製後是否彼此影響」。
-
----
 
 ## Call by Value
 
@@ -33,14 +29,10 @@ console.log(a); // 15
 console.log(b); // 20
 ```
 
----
-
 ## Call by Reference
 
 這種傳值方式會直接把記憶體位置傳入函式中，讓函式可以**直接改變原變數的值**。
 JavaScript 並**不支援這種真正的 call by reference**，但在像 C++ 或 C# 中，透過 `ref` 或 `&` 等關鍵字可以達成。
-
----
 
 ## Call by Sharing
 
