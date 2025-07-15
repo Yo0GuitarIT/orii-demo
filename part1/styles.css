@@ -72,7 +72,58 @@ li {
   grid-row-end: 4;
   background: var(--color-beige);
   display: flex;
-  
+  gap: 48px;
+  padding: 60px;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.title {
+  width: 50px;
+  font-weight: var(--font-weight-bold);
+  font-size: 2rem;
+  color: var(--color-black);
+  line-height: 100%;
+  writing-mode: vertical-lr;
+}
+
+.circle {
+  position: absolute;
+  top: 3.5rem;
+  left: 1.5rem;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: var(--color-brown);
+  opacity: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  background: var(--color-beige); /* 與背景色一致 */
+  border-radius: 50%;
+  display: block;
+}
+
+.text-content {
+  font-weight: var(--font-weight-regular);
+  font-size: 1rem;
+  color: var(--color-black);
+  flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .header {
@@ -83,7 +134,7 @@ li {
   gap: 8px;
 }
 
-.nav-item{
+.nav-item {
   font-weight: var(--font-weight-regular);
   color: var(--color-black);
   text-decoration: none;
