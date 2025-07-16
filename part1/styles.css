@@ -5,8 +5,11 @@
   --color-brown: #aa6666;
   --color-black: #000000;
   --color-beige: #d7c7b8;
+  --color-gray: #f0f0f0;
+  --color-shadow: rgba(119, 119, 119, 0.5);
   --font-weight-regular: 400;
   --font-weight-bold: 700;
+  
 }
 
 * {
@@ -25,7 +28,7 @@ body {
   font-style: normal;
   line-height: 1.6;
   color: var(--color-black);
-  background-color: var(--color-white);
+  background-color: var(--color-beige);
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -37,7 +40,30 @@ li {
   list-style: none;
 }
 
+/* 語義化標籤支援 - 保持原有樣式 */
+.sidebar-item {
+  font-weight: var(--font-weight-regular);
+  color: var(--color-black);
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+/* 基本的無障礙改善 */
+.sidebar-item:hover,
+.sidebar-item:focus {
+  color: var(--color-brown);
+}
+
+.header-text {
+  font-size: 1rem;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-black);
+}
+
 .container {
+  border: 1px solid var(--color-black);
   max-width: 1440px;
   width: 100%;
   height: 100vh;
@@ -45,48 +71,287 @@ li {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  
+}
+
+.bird-logo {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-image: url("./assets/bird-logo.png");
+  background-color: var(--color-white);
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 0 0.3rem var(--color-shadow); ;
+  z-index: 10;
+  right: -2.5rem;
+  top: 2rem;
+}
+
+.navbar {
+  display: none;
 }
 
 .sidebar {
+  background-color: var(--color-white);
   width: 100%;
+  min-width: 280px;
   height: 100%;
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 4;
-  background: var(--color-brown);
+  position: relative;
 }
 
-.hero-section {
+.sidebar-title {
+  width: 100%;
+  font-weight: var(--font-weight-bold);
+  font-size: 2rem;
+  color: var(--color-black);
+  text-align: center;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 0 3rem;
+}
+
+.sidebar-item {
+  font-weight: var(--font-weight-regular);
+  color: var(--color-black);
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
+section {
   grid-column-start: 2;
   grid-column-end: 5;
   grid-row-start: 1;
   grid-row-end: 3;
-  background: #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  background-image: url(./assets/image.jpg);
+  background-size: 160% auto;
+  background-position: right -80px top -180px;
 }
 
-.main-content {
+section div {
+  width: 100%;
+  padding: 0 2rem 2rem 2rem;
+}
+
+section h1 {
+  font-weight: var(--font-weight-bold);
+  font-size: 3rem;
+  color: var(--color-white);
+  text-align: end;
+}
+
+section p {
+  font-weight: var(--font-weight-regular);
+  font-size: 1rem;
+  color: var(--color-white);
+  text-align: end;
+}
+
+main {
   grid-column-start: 2;
   grid-column-end: 5;
   grid-row-start: 3;
   grid-row-end: 4;
   background: var(--color-beige);
   display: flex;
-  
+  gap: 3rem;
+  padding: 60px;
 }
 
-.header {
+article {
+  position: relative;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+article h2 {
+  width: 50px;
+  font-weight: var(--font-weight-bold);
+  font-size: 2rem;
+  color: var(--color-black);
+  line-height: 100%;
+  writing-mode: vertical-lr;
+  letter-spacing: 0.5rem;
+}
+
+article .circle {
+  position: absolute;
+  top: 3.5rem;
+  left: 1.5rem;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: var(--color-brown);
+  opacity: 60%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
 }
 
-.nav-item{
+article .circle::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  background: var(--color-beige);
+  border-radius: 50%;
+  display: block;
+}
+
+article p {
   font-weight: var(--font-weight-regular);
+  font-size: 1rem;
   color: var(--color-black);
-  text-decoration: none;
-  line-height: 100%;
-  padding: 16px 0;
+  flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  line-height: 120%;
+}
+
+/* 點擊 .sidebar-item 連結時，會有以下樣式變點擊 */
+.active {
+  color: var(--color-brown);
+  font-weight: var(--font-weight-bold);
+  text-decoration: underline;
+  text-underline-offset: 0.5rem;
+  text-decoration-thickness: 2px;
+}
+
+@media screen and (max-width: 1000px) {
+  section {
+    background-size: 150%;
+    background-position: center top;
+  }
+
+  main {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  section {
+    background-size: cover;
+  }
+}
+
+/* 手機排版 */
+@media screen and (max-width: 700px) {
+  body {
+    height: auto;
+  }
+
+  .container {
+    height: auto;
+    max-height: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: none;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .navbar {
+    display: inline;
+  }
+
+  .navbar-header {
+    background-color: var(--color-white);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar ul {
+    display: none;
+    background-color: var(--color-white);
+    border-top: 1px solid var(--color-gray);
+    padding: 1rem 0;
+  }
+
+  button.menu-icon {
+    background-color: var(--color-white);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-icon img {
+    width: 40px;
+    height: 40px;
+    display: block;
+  }
+
+  .menu-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-black);
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+    background-image: url("./assets/bird-logo.png");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    box-shadow: 0 0 0.3rem var(--color-shadow);
+  }
+
+  section {
+    height: 312px;
+    background-size: 150%;
+  }
+
+  section div {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+  }
+
+  section h1 {
+    line-height: 110%;
+    margin-bottom: 0.5rem;
+  }
+
+  main {
+    height: auto;
+    padding: 60px 3rem;
+  }
+
+  .active {
+    font-weight: var(--font-weight-regular);
+  }
+
+  .bird-logo {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  section {
+    background-size: 275%;
+    background-position: right -275px top -110px;
+  }
 }

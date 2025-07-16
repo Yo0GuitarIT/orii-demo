@@ -1,60 +1,36 @@
-// DOM Ready
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOM loaded and ready");
+  // 取得所有 sidebar-item 連結
+  const sidebarItems = document.querySelectorAll(".sidebar-item");
 
-  // 初始化應用
-  init();
+  // 為每個 sidebar-item 添加點擊事件監聽器
+  sidebarItems.forEach((item) => {
+    item.addEventListener("click", function (e) {
+      e.preventDefault(); // 防止預設的連結行為
+
+      // 移除所有 sidebar-item 的 active 類別
+      sidebarItems.forEach((otherItem) => {
+        otherItem.classList.remove("active");
+      });
+
+      // 為當前點擊的項目添加 active 類別
+      this.classList.add("active");
+    });
+  });
+
+  // 取得 menu-icon 按鈕和 navbar ul
+  const menuIcon = document.querySelector(".menu-icon");
+  const navbarMenu = document.querySelector(".navbar ul");
+
+  // 為 menu-icon 添加點擊事件監聽器
+  menuIcon.addEventListener("click", function () {
+    // 切換 navbar ul 的顯示狀態
+    if (
+      navbarMenu.style.display === "none" ||
+      navbarMenu.style.display === ""
+    ) {
+      navbarMenu.style.display = "block";
+    } else {
+      navbarMenu.style.display = "none";
+    }
+  });
 });
-
-// 初始化函數
-function init() {
-  // 在這裡加入你的初始化邏輯
-  setupEventListeners();
-  setupResponsiveHandlers();
-}
-
-// 設定事件監聽器
-function setupEventListeners() {
-  // 例如：導航、按鈕點擊等事件
-}
-
-// 響應式處理
-function setupResponsiveHandlers() {
-  // 處理視窗大小變化
-  window.addEventListener("resize", handleResize);
-}
-
-function handleResize() {
-  // 響應式邏輯
-}
-
-// Utility functions
-const utils = {
-  // 節流函數
-  throttle: function (func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  },
-
-  // 防抖函數
-  debounce: function (func, wait, immediate) {
-    let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        timeout = null;
-        if (!immediate) func(...args);
-      };
-      const callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) func(...args);
-    };
-  },
-};
