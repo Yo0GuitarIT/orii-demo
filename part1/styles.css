@@ -87,7 +87,31 @@ li {
   grid-column-end: 5;
   grid-row-start: 1;
   grid-row-end: 3;
-  background: #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  background-image: url(./assets/image.jpg);
+  background-size: 160% auto;
+  background-position: right -80px top -180px;
+}
+
+.hero-content {
+  width: 100%;
+  padding: 0 2rem 2rem 2rem;
+}
+
+.hero-title {
+  font-weight: var(--font-weight-bold);
+  font-size: 2rem;
+  color: var(--color-white);
+  text-align: end;
+}
+
+.hero-subtitle {
+  font-weight: var(--font-weight-regular);
+  font-size: 1rem;
+  color: var(--color-white);
+  text-align: end;
 }
 
 .main-content {
