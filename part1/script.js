@@ -16,4 +16,21 @@ document.addEventListener("DOMContentLoaded", function () {
       this.classList.add("active");
     });
   });
+
+  // 取得 menu-icon 按鈕和 navbar ul
+  const menuIcon = document.querySelector(".menu-icon");
+  const navbarMenu = document.querySelector(".navbar ul");
+
+  // 為 menu-icon 添加點擊事件監聽器
+  menuIcon.addEventListener("click", function () {
+    // 切換 navbar ul 的顯示狀態
+    if (
+      navbarMenu.style.display === "none" ||
+      navbarMenu.style.display === ""
+    ) {
+      navbarMenu.style.display = "block";
+    } else {
+      navbarMenu.style.display = "none";
+    }
+  });
 });

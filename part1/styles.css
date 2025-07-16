@@ -5,6 +5,7 @@
   --color-brown: #aa6666;
   --color-black: #000000;
   --color-beige: #d7c7b8;
+  --color-gray: #f0f0f0;
   --font-weight-regular: 400;
   --font-weight-bold: 700;
 }
@@ -188,7 +189,7 @@ article .circle::after {
   content: "";
   width: 9px;
   height: 9px;
-  background: var(--color-beige); /* 與背景色一致 */
+  background: var(--color-beige);
   border-radius: 50%;
   display: block;
 }
@@ -250,11 +251,22 @@ article p {
   }
 
   .navbar {
+    display: inline;
+  }
+
+  .navbar-header {
     background-color: var(--color-white);
     padding: 1rem 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .navbar ul {
+    display: none;
+    background-color: var(--color-white);
+    border-top: 1px solid var(--color-gray);
+    padding: 1rem 0;
   }
 
   button.menu-icon {
@@ -301,6 +313,10 @@ article p {
   main {
     height: auto;
     padding: 60px 3rem;
+  }
+
+  .active{
+    font-weight: var(--font-weight-regular);
   }
 }
 
