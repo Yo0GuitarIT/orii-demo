@@ -6,8 +6,10 @@
   --color-black: #000000;
   --color-beige: #d7c7b8;
   --color-gray: #f0f0f0;
+  --color-shadow: rgba(119, 119, 119, 0.5);
   --font-weight-regular: 400;
   --font-weight-bold: 700;
+  
 }
 
 * {
@@ -69,6 +71,23 @@ li {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  
+}
+
+.bird-logo {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-image: url("./assets/bird-logo.png");
+  background-color: var(--color-white);
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 0 0.3rem var(--color-shadow); ;
+  z-index: 10;
+  right: -2.5rem;
+  top: 2rem;
 }
 
 .navbar {
@@ -84,6 +103,7 @@ li {
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 4;
+  position: relative;
 }
 
 .sidebar-title {
@@ -293,7 +313,12 @@ article p {
   .logo {
     width: 40px;
     height: 40px;
-    background-color: var(--color-black);
+    background-image: url("./assets/bird-logo.png");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    box-shadow: 0 0 0.3rem var(--color-shadow);
   }
 
   section {
@@ -315,8 +340,12 @@ article p {
     padding: 60px 3rem;
   }
 
-  .active{
+  .active {
     font-weight: var(--font-weight-regular);
+  }
+
+  .bird-logo {
+    display: none;
   }
 }
 
