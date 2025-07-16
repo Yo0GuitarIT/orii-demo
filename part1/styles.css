@@ -50,6 +50,7 @@ li {
 .sidebar {
   background-color: var(--color-white);
   width: 100%;
+  min-width: 280px;
   height: 100%;
   grid-column-start: 1;
   grid-column-end: 2;
@@ -80,7 +81,6 @@ li {
   padding: 0.5rem 1rem;
   text-align: center;
 }
-
 
 .hero-section {
   grid-column-start: 2;
@@ -121,7 +121,7 @@ li {
   grid-row-end: 4;
   background: var(--color-beige);
   display: flex;
-  gap: 48px;
+  gap: 3rem;
   padding: 60px;
 }
 
@@ -175,5 +175,15 @@ li {
   hyphens: auto;
 }
 
+@media screen and (max-width: 1000px) {
+  .hero-section {
+    background-size: 150%;
+    background-position: center top;
+  }
+
+  .main-content {
+    flex-wrap: wrap;
+  }
+}
 
 
