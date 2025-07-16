@@ -50,7 +50,7 @@ li {
 /* 基本的無障礙改善 */
 .sidebar-item:hover,
 .sidebar-item:focus {
-  color: var(--color-beige);
+  color: var(--color-brown);
 }
 
 .header-text {
@@ -202,6 +202,15 @@ article p {
   overflow-wrap: break-word;
   hyphens: auto;
   line-height: 120%;
+}
+
+/* 點擊 .sidebar-item 連結時，會有以下樣式變點擊 */
+.active {
+  color: var(--color-brown);
+  font-weight: var(--font-weight-bold);
+  text-decoration: underline;
+  text-underline-offset: 0.5rem;
+  text-decoration-thickness: 2px;
 }
 
 @media screen and (max-width: 1000px) {
