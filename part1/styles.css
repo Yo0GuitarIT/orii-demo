@@ -37,6 +37,28 @@ li {
   list-style: none;
 }
 
+/* 語義化標籤支援 - 保持原有樣式 */
+.sidebar-item {
+  font-weight: var(--font-weight-regular);
+  color: var(--color-black);
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+/* 基本的無障礙改善 */
+.sidebar-item:hover,
+.sidebar-item:focus {
+  color: var(--color-beige);
+}
+
+.header-text {
+  font-size: 1rem;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-black);
+}
+
 .container {
   border: 1px solid var(--color-black);
   max-width: 1440px;
@@ -87,7 +109,7 @@ li {
   text-align: center;
 }
 
-.hero-section {
+section {
   grid-column-start: 2;
   grid-column-end: 5;
   grid-row-start: 1;
@@ -100,26 +122,26 @@ li {
   background-position: right -80px top -180px;
 }
 
-.hero-content {
+section div {
   width: 100%;
   padding: 0 2rem 2rem 2rem;
 }
 
-.hero-title {
+section h1 {
   font-weight: var(--font-weight-bold);
   font-size: 3rem;
   color: var(--color-white);
   text-align: end;
 }
 
-.hero-subtitle {
+section p {
   font-weight: var(--font-weight-regular);
   font-size: 1rem;
   color: var(--color-white);
   text-align: end;
 }
 
-.main-content {
+main {
   grid-column-start: 2;
   grid-column-end: 5;
   grid-row-start: 3;
@@ -130,7 +152,7 @@ li {
   padding: 60px;
 }
 
-.card {
+article {
   position: relative;
   width: 100%;
   display: flex;
@@ -138,16 +160,17 @@ li {
   justify-content: space-between;
 }
 
-.title {
+article h2 {
   width: 50px;
   font-weight: var(--font-weight-bold);
   font-size: 2rem;
   color: var(--color-black);
   line-height: 100%;
   writing-mode: vertical-lr;
+  letter-spacing: 0.5rem;
 }
 
-.circle {
+article .circle {
   position: absolute;
   top: 3.5rem;
   left: 1.5rem;
@@ -161,7 +184,7 @@ li {
   justify-content: center;
 }
 
-.circle::after {
+article .circle::after {
   content: "";
   width: 9px;
   height: 9px;
@@ -170,7 +193,7 @@ li {
   display: block;
 }
 
-.text-content {
+article p {
   font-weight: var(--font-weight-regular);
   font-size: 1rem;
   color: var(--color-black);
@@ -182,18 +205,18 @@ li {
 }
 
 @media screen and (max-width: 1000px) {
-  .hero-section {
+  section {
     background-size: 150%;
     background-position: center top;
   }
 
-  .main-content {
+  main {
     flex-wrap: wrap;
   }
 }
 
 @media screen and (max-width: 900px) {
-  .hero-section {
+  section {
     background-size: cover;
   }
 }
@@ -225,6 +248,21 @@ li {
     justify-content: space-between;
   }
 
+  button.menu-icon {
+    background-color: var(--color-white);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-icon img {
+    width: 40px;
+    height: 40px;
+    display: block;
+  }
+
   .menu-icon {
     width: 40px;
     height: 40px;
@@ -237,28 +275,28 @@ li {
     background-color: var(--color-black);
   }
 
-  .hero-section {
+  section {
     height: 312px;
     background-size: 150%;
   }
 
-  .hero-title {
+  section div {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+  }
+
+  section h1 {
     line-height: 110%;
     margin-bottom: 0.5rem;
   }
 
-  .hero-content {
-    padding: 0 1.5rem 1.5rem 1.5rem;
-  }
-
-  .main-content {
+  main {
     height: auto;
     padding: 60px 3rem;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .hero-section {
+  section {
     background-size: 275%;
     background-position: right -275px top -110px;
   }
